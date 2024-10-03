@@ -29,7 +29,7 @@ dataPromise.then((res)=> console.log(res)); //logs returned wrapped value inside
 
 1. async and await combo is used to handle promises 
 2. but before async await how do we used to handle promises, do we really need async await? let compare both:
-3. await can only be used inside an async function & we write await infront of a promise and it resolves the promise.
+3. **await can only be used inside an async function & we write await infront of a promise and it resolves the promise**.
 4. Promise is usualy something which doesn't resolve instantaneously. so lets use setTimeout to mimic that. To see the difference between older and and new async await way of handling promise.
 
 ```javascript
@@ -68,6 +68,8 @@ handlePromise();
  }
 
 getData();
+
+
 ```
 
 
@@ -109,7 +111,7 @@ handlePromise();
 
 
 ## Case-2 : p1 resolves before p2
-Here since p1 will be resolved in 5s - its logs will be printed. and after 5 more seconds that 10s in toatl p2 will get resolved - then p2 logs will be printed. Since till p1 resolves 5 seconds would have already been passed, and now at await p2 program will only need to wait for remaining 5 seconds.
+Here since p1 will be resolved in 5s - its logs will be printed. and after 5 more seconds that is 10s in total p2 will get resolved - then p2 logs will be printed. Since till p1 resolves, 5 seconds would have already been passed, and now at await p2 program will only need to wait for remaining 5 seconds.
 
 ```javascript
 const p1=new Promise((resolve,reject) => {
@@ -161,7 +163,7 @@ const API_URL = "https://api.github.com/users/pavansingh888";
      const data = await fetch(API_URL);
      const jsonVal = await data.json();
 
-     //fetch() => promise => when its resolved => we get response object inside our 'data'. => this response object have a body which is a readable stream => to convert this reponse body(which is a readble stream) , we will convert it to JSON => we will do response.json() or data.json() 
+     //fetch() => promise => when its resolved => we get response object inside our 'data'. => this response object have a body which is a readable stream => to convert this reponse body( which is a readble stream) , we will convert it to JSON => we will do response.json() or data.json() 
      // data.json() is again a promise. so we write await in front this promise, and whatever we will get from this will be the json value.
      console.log(jsonVal);
  }
@@ -171,7 +173,7 @@ handlePromise()
 
 
 # Error handling
-1. While we were using normal 'promise.then', we had a catch() emthod to handle errors.
+1. While we were using normal 'promise.then', we had a catch() method to handle errors.
 But for async await, we will use try-catch methods.
 2. Wherever we have async await inside our code we should wrap it inside try{} block and then we can have catch(err){console.log(err)} where we can handle error.
 ## Using try-catch
